@@ -1,6 +1,5 @@
 server:
   port: 8083
-  context-path: /authserver
 
 spring:
   datasource:
@@ -16,5 +15,3 @@ security:
   oauth2:
     resource:
       filter-order: 3
-
-

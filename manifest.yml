@@ -1,0 +1,10 @@
+---
+applications:
+- name: auth-server
+  memory: 512M
+  instances: 1
+  path: target/auth-server-0.0.1-SNAPSHOT.jar
+  services:
+  - userdb
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
