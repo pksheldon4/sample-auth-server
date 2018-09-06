@@ -1,9 +1,9 @@
 ---
 applications:
-- name: auth-server
-  memory: 512M
+- name: auth-server-ps
+  memory: 768M
   instances: 1
-  path: target/auth-server-0.0.1-SNAPSHOT.jar
+  path: target/auth-server.jar
   services:
   - userdb
   env:
