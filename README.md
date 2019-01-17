@@ -1,7 +1,7 @@
 # sample-auth-server
 
 
-Update hosts file to may auth-server, resource-server to 127.0.0.1/localhost
+Update hosts file to my auth-server, resource-server to 127.0.0.1/localhost
 
 
 The manifest.yml in this app, and the associated sample-resource-server and sample-ui-client apps is set 
