@@ -1,4 +1,4 @@
-package com.example.pksiv.authserver;
+package com.pksheldon4.sample.authserver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

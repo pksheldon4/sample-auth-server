@@ -1,6 +1,6 @@
-package com.example.pksiv.authserver.persistence;
+package com.pksheldon4.sample.authserver.persistence;
 
-import com.example.pksiv.authserver.web.model.User;
+import com.pksheldon4.sample.authserver.web.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

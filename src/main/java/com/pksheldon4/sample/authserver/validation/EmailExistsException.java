@@ -1,4 +1,4 @@
-package com.example.pksiv.authserver.validation;
+package com.pksheldon4.sample.authserver.validation;
 
 public class EmailExistsException extends Throwable {
 

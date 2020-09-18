@@ -1,15 +1,18 @@
 server:
   port: 8083
 
+mysql-options: '?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true&useSSL=false'
+
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/testdb?createDatabaseIfNotExist=true&useSSL=false
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/testdb${mysql-options}
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: testdb
     password: testdb
+    initialization-mode: always
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
 
 security:
   oauth2:

@@ -1,12 +1,12 @@
-package com.example.pksiv.authserver.security;
+package com.pksheldon4.sample.authserver.security;
 
-import com.example.pksiv.authserver.web.model.User;
-import com.example.pksiv.authserver.persistence.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.pksheldon4.sample.authserver.persistence.UserRepository;
+import com.pksheldon4.sample.authserver.web.model.User;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -14,14 +14,13 @@ import java.util.Arrays;
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
-    @Autowired
+    PasswordEncoder passwordEncoder;
     private UserRepository userRepository;
 
-    public MyUserDetailsService() {
-        super();
+    public MyUserDetailsService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
-
-    // API
 
     @Override
     public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
@@ -31,7 +30,7 @@ public class MyUserDetailsService implements UserDetailsService {
                 throw new UsernameNotFoundException("No user found with email: " + email);
             }
 
-            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), true, true, true, true, Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+            return new org.springframework.security.core.userdetails.User(user.getEmail(), passwordEncoder.encode(user.getPassword()), true, true, true, true, Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
         } catch (final Exception e) {
             throw new RuntimeException(e);
         }
